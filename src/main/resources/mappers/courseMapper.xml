@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ning.mappers.courseMapper">
+
+<!--    <cache type="org.mybatis.caches.ehcache.EhcacheCache" />-->
+
+<!--    public  course courseInfo();-->
+    <select id="courseInfo" resultType="course">
+        select * from c_course where id = #{id}
+    </select>
+<!--    public  course courseInfoBysid(@Param("sid") Integer sid);-->
+    <select id="courseInfoBysid" resultType="course">
+        select * from c_course where sid = #{sid}
+    </select>
+<!--    public Integer changeHours;-->
+    <update id="changeHours">
+        update c_course set hours= #{hours} where id = #{id}
+    </update>
+<!--    Integer insertCourse(course course);-->
+    <insert id="insertCourse">
+        insert into c_course values(null,#{name},#{hours},#{sid})
+    </insert>
+<!--    List<course> allCourses();-->
+    <select id="allCourses" resultType="course">
+        select * from c_course
+    </select>
+</mapper>
